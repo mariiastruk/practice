@@ -10,12 +10,27 @@ const personalMovieDB = {
     privat: false
 };
 
-const a = prompt("Останній перглянутий фільм?", ""),
-    b = prompt("На скільки балів оцінете фільм?", ""),
-    c = prompt("Останній перглянутий фільм?", ""),
-    d = prompt("На скільки балів оцінете фільм?", "");
+for (let i = 0; i < 2; i++) {
+    const a = prompt("Останній перглянутий фільм?", ""),
+        b = prompt("На скільки балів оцінете фільм?", "");
+    
+    if (a != null && b != null && a != "" && b != "" && a.length < 50) {
+        personalMovieDB.movies[a] = b;
+        console.log("done");
+    } else {
+        console.log("error");
+        i--;
+    }
+}
 
-personalMovieDB.movies[a] = b;
-personalMovieDB.movies[c] = d;
+if (personalMovieDB.count < 10) {
+    console.log("Переглянуто дуже мало фільмів");
+} else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30) {
+    console.log("Стандартний глядач");
+} else if (personalMovieDB.count >= 30) {
+    console.log("Ви кіноман");
+} else {
+    console.log("Помилка");
+}
 
 console.log(personalMovieDB);
